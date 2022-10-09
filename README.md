@@ -11,8 +11,11 @@ Meet Pastor Bruce Germain
 
 <a href="https://lh3.googleusercontent.com/Lq6Nghc2RD0psYFz2f8u_WlVk6voCml9VKSDKvrVe6SMwM-2lmrM70Q1KPfLCat7N6zkIWLr4y7fr7JFc6FTxg_UON9Flw3Api21pmI3VN4nkHOO07FQA1Q_EuxYsZcAzcLCla0B=w2400?source=screenshot.guru"> <img src="https://lh3.googleusercontent.com/Lq6Nghc2RD0psYFz2f8u_WlVk6voCml9VKSDKvrVe6SMwM-2lmrM70Q1KPfLCat7N6zkIWLr4y7fr7JFc6FTxg_UON9Flw3Api21pmI3VN4nkHOO07FQA1Q_EuxYsZcAzcLCla0B=w600-h315-p-k" /> </a>
 
-            <ul>
-        <li><a href="mailto: Pst.bruce67@gmail.com">Email Us</a></li>
-        <li><a href="tel:+254722932843">Call Us</a></li>
-	</ul>
 
+<p>
+<ul>
+<li><a href="mailto: Pst.bruce67@gmail.com">Email</a></li>
+<br><br>
+<li><a href="tel: +254722932843">Call</a></li>
+</ul>
+</p>
