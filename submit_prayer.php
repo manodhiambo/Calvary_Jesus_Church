@@ -1,9 +1,9 @@
 <?php
 // Database connection
 $servername = "localhost";
-$username = "root"; // Replace with your DB username
-$password = ""; // Replace with your DB password
-$dbname = "calvary_jesus_church"; // Replace with your DB name
+$username = "manodhiambo"; // Replace with your DB username
+$password = "Mycat@95"; // Replace with your DB password
+$dbname = "calvary_church"; // Replace with your DB name
 
 
 // Create connection
@@ -15,24 +15,34 @@ if ($conn->connect_error) {
 }
 
 // Get data from the form
-$name = $_POST['name'];
-$phone = $_POST['phone'] ?? ''; // Optional field
-$prayerRequest = $_POST['prayerRequest'];
-$secret = $_POST['secret'];
-$canCall = $_POST['canCall'];
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+	$full_name = $_POST["full_name"] ?? '';
+	$phone_number = $_POST["phone_number"] ?? '';
+	$prayer_request = $_POST["prayer_request"] ?? '';
+	$secret = $_POST["secret"] ?? '';
+	$can_call = $_POST["can_call"] ?? '';
 
 
-// Prepare and bind
-$stmt = $conn->prepare("INSERT INTO prayer_requests (name, phone, prayer_request, secret, can_call) VALUES (?, ?, ?, ?, ?)");
-$stmt->bind_param("sssss", $name, $phone, $prayerRequest, $secret, $canCall);
+// Validate input (optional but recommended)
 
-// Execute the statement
-if ($stmt->execute()) {
-	    echo "Prayer request submitted successfully!";
+	if (!empty($full_name) && !empty($prayer_request)) {
+		// Prepare the SQL query
+		$sql = "INSERT INTO prayer_requests (full_name, phone_number, prayer_request, secret, can_call)
+			VALUES ('$full_name', '$phone_number', '$prayer_request', '$secret', '$can_call')";
+
+		// Execute the query
+		if ($conn->query($sql) === TRUE) {
+			echo "Thank you! Your prayer request has been submitted.";
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+		    } else {
+			            echo "Full Name and Prayer Request are required fields.";
+				        }
 } else {
-	    echo "Error: " . $stmt->error;
+	// Handle when script is not accessed via a POST request
+	echo "This script can only handle POST requests. Ensure you're submitting the form correctly.";
 }
-
-$stmt->close();
+// Close the connection
 $conn->close();
 ?>

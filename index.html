@@ -79,7 +79,7 @@
 			<section class="prayer-request">
 
 				<h2>Submit Your Prayer Request</h2>
-				<form id="prayer-form">
+				<form  id="prayer-form" method="POST" action="submit_prayer.php">
 					<div class="form-group">
 						<label for="name">Full Name:</label>
 						<input type="text" id="name" name="full_name" placeholder="Enter your name" required>
@@ -105,7 +105,24 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label>Can we call you for a one-on-one talk?</label> <script src="script.js"></script>
+						<label>Can we call you for a one-on-one talk?</label>
+						<div class="radio-group">
+							<input type="radio" id="call-yes" name="can_call" value="Yes" required>
+							<label for="call-yes">Yes</label>
+							<input type="radio" id="call-no" name="can_call" value="No">
+							<label for="call-no">No</label>
+						</div>
+					</div>
+
+					<button type="submit" class="submit-btn">Submit Prayer Request</button>
+				</form>
+				<p id="success-message" style="display: none;">Thank you for sharing your prayer request. We will pray for you.</p>
+			</section>
+		</main>
+
+
+
+						<script src="script.js"></script>
 	</body>
 </html>
 
