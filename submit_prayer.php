@@ -1,9 +1,9 @@
 <?php
 // Database connection
 $servername = "localhost";
-$username = "manodhiambo"; // Replace with your DB username
-$password = "Mycat@95"; // Replace with your DB password
-$dbname = "calvary_church"; // Replace with your DB name
+$username = "manodhiambo";
+$password = "Mycat@95"; 
+$dbname = "calvary_church"; 
 
 
 // Create connection
