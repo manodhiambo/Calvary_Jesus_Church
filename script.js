@@ -1,44 +1,52 @@
-// Toggle show more details
-document.getElementById('toggle-details').addEventListener('click', function () {
-	    const moreDetails = document.getElementById('more-details');
-	    if (moreDetails.style.display === 'none') {
-		            moreDetails.style.display = 'block';
-		            this.textContent = 'Show Less Details';
-		        } else {
-				        moreDetails.style.display = 'none';
-				        this.textContent = 'Show More Details';
-				    }
-});
+// Wait for the DOM to load
+document.addEventListener("DOMContentLoaded", function () {
+	alert("Welcome to Calvary Jesus Church! We're glad to have you here.");
+	const prayerForm = document.querySelector(".contact-form");
+	    if (prayerForm) {
+		            prayerForm.addEventListener("submit", function (e) {
+				                e.preventDefault();
+				    const name = document.querySelector("input[name='name']");
+				                const prayerRequest = document.querySelector("textarea[name='prayer']");
 
-// Handle prayer request form submission
-document.getElementById('prayer-form').addEventListener('submit', function (event) {
-	    event.preventDefault(); // Prevent form submission
-	    const name = document.getElementById('name').value;
-	    const phone = document.getElementById('phone').value;
-	    const prayerRequest = document.getElementById('prayer').value;
-	    const secret = document.querySelector('input[name="secret"]:checked').value;
-	    const canCall = document.querySelector('input[name="can_call"]:checked').value;
+				                if (!name.value.trim()) {
+							                alert("Please provide your full name.");
+							                name.focus();
+							                return;
+							            }
 
-	    if (name && prayerRequest) {
-		    // Here, we can send data to the PHP backend to handle form submission
-		            const formData = new FormData();
-		            formData.append('name', name);
-		            formData.append('phone', phone);
-		            formData.append('prayerRequest', prayerRequest);
-		            formData.append('secret', secret);
-		            formData.append('canCall', canCall);
+				                if (!prayerRequest.value.trim()) {
+							                alert("Please enter a prayer request.");
+							                prayerRequest.focus();
+							                return;
+							            }
 
-		            fetch('submit_prayer.php', {
-				                method: 'POST',
-				                body: formData
-				            })
-		            .then(response => response.text())
-		            .then(data => {
-				                document.getElementById('success-message').style.display = 'block';
-				                document.getElementById('prayer-form').reset(); // Reset form
-			    })
-		            .catch(error => {
-				                alert('Error submitting prayer request. Please try again later.');
-				            });
+				                alert("Thank you for your submission! We'll keep you in our prayers.");
+				                prayerForm.reset();
+			    });
 		        }
+
+	// Scroll to Sections
+	const navLinks = document.querySelectorAll("nav a");
+	navLinks.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault();
+			const targetId = this.getAttribute("href").slice(1);
+			const targetSection = document.getElementById(targetId);
+			if (targetSection) {
+				window.scrollTo({
+					top: targetSection.offsetTop - 50,
+					behavior: "smooth",
+					                });
+				            }
+			        });
+		    });
+
+	// Gallery Image Click Effect
+	const galleryImages = document.querySelectorAll(".gallery img");
+	galleryImages.forEach((img) => {
+		img.addEventListener("click", function () {
+			const imageUrl = img.getAttribute("src");
+			window.open(imageUrl, "_blank");
+		});
+		    });
 });
