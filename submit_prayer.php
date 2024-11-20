@@ -1,7 +1,7 @@
 <?php
 // Database connection configuration
-$username = 'manodhiambo';
-$password = 'Mycat@95';
+$username = '';
+$password = '';
 $dsn = "mysql:host=127.0.0.1;dbname=calvary_church;charset=utf8mb4";
 
 
