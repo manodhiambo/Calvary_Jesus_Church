@@ -2,7 +2,6 @@ body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 	background-color: aqua;
-	background: url('https://sl.bing.net/eBsYaZutpZI') no-repeat center center fixed;
 	background-size: cover;
 	line-height: 1.6;
 }
@@ -11,6 +10,7 @@ header {
 	text-align: center;
 	padding: 50px 20px;
 	background-color: rgb(135, 206, 235);
+	background: url('https://sl.bing.net/eBsYaZutpZI') no-repeat center center fixed;
 }
 
 header h1 {

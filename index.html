@@ -13,15 +13,14 @@ body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 	background-color: aqua;
-	background: url('https://sl.bing.net/eBsYaZutpZI') no-repeat center center fixed;
 	background-size: cover;
-	color: #fff;
 }
 
 header {
 	text-align: center;
 	padding: 50px 20px;
 	background-color: rgb(135, 206, 235);
+	background: url('https://sl.bing.net/eBsYaZutpZI') no-repeat center center fixed;
 }
 header h1 {
 	font-size: 3em;
@@ -189,22 +188,5 @@ footer {
 			<p>&copy; 2024 Calvary Jesus Church. All rights reserved.</p>
 		</footer>
 		<script src="script.js"></script>
-			<form class="contact-form" action="submit_prayer.php" method="POST">
-				<input type="text" name="full_name" placeholder="Full name" required>
-				<input type="text" name="phone_number" placeholder="Phone number (Optional)">
-				<textarea name="prayer_request" placeholder="What would you like to be prayed for?" required></textarea>
-				<label>
-				<input type="checkbox" name="is_secret"> Is this supposed to be a secret?
-				</label>
-				<label>
-				<input type="checkbox" name="allow_contact"> Can we call you for a one-on-one talk?
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-		</section>
-
-		<footer>
-			<p>&copy; 2024 Calvary Jesus Church. All rights reserved.</p>
-		</footer>
 	</body>
 </html>

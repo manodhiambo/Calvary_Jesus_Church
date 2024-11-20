@@ -72,11 +72,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (empty($fullName) || empty($prayerRequest)) {
 		        echo "Full name and prayer request are required.";
 			        exit;
-			    }
+	}
 
 	// Insert data into the database
 	$sql = "INSERT INTO prayer_requests (full_name, phone_number, prayer_request, is_secret, allow_contact)
-		            VALUES ('$fullName', '$phoneNumber', '$prayerRequest', '$isSecret', '$allowContact')";
+			    VALUES ('$fullName', '$phoneNumber', '$prayerRequest', '$isSecret', '$allowContact')";
+	if ($form_submission_success) {
+		header('Location: form_page.php?status=success');
+		        exit;
+	} else {
+		echo "There was an error processing your prayer request.";
+		    }
 
     if ($conn->query($sql) === TRUE) {
         echo "Thank you for your prayer request! We will pray for you.";
