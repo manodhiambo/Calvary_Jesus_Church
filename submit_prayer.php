@@ -1,48 +1,54 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "";
-$password = ""; 
-$dbname = "calvary_church"; 
+// Database connection configuration
+$username = 'manodhiambo';
+$password = 'Mycat@95';
+$dsn = "mysql:host=127.0.0.1;dbname=calvary_church;charset=utf8mb4";
 
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+try {
+	    // Create PDO instance and set error mode to exception
+	$conn = new PDO($dsn, $username, $password);
+	// Set the PDO error mode to exception
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Check connection
-if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
+} catch (PDOException $e) {
+	// Catch and display any errors during the connection attempt
+	die("Connection failed: " . $e->getMessage());
 }
 
-// Get data from the form
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-	$full_name = $_POST["full_name"] ?? '';
-	$phone_number = $_POST["phone_number"] ?? '';
-	$prayer_request = $_POST["prayer_request"] ?? '';
-	$secret = $_POST["secret"] ?? '';
-	$can_call = $_POST["can_call"] ?? '';
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	// Get form values and sanitize them
+	$full_name = $_POST['full_name'];
+	$phone_number = isset($_POST['phone_number']) ? $_POST['phone_number'] : NULL;
+	$prayer_request = $_POST['prayer_request'];
+	$is_secret = isset($_POST['is_secret']) ? 1 : 0;
+	$allow_contact = isset($_POST['allow_contact']) ? 1 : 0;
 
+	try {
+		// Prepare SQL query with placeholders
+		 $sql = "INSERT INTO prayer_requests (full_name, phone_number, prayer_request, is_secret, allow_contact) 
+			 VALUES (:full_name, :phone_number, :prayer_request, :is_secret, :allow_contact)";
+		
+		// Prepare statement
+		$stmt = $conn->prepare($sql);
 
-// Validate input (optional but recommended)
-
-	if (!empty($full_name) && !empty($prayer_request)) {
-		// Prepare the SQL query
-		$sql = "INSERT INTO prayer_requests (full_name, phone_number, prayer_request, secret, can_call)
-			VALUES ('$full_name', '$phone_number', '$prayer_request', '$secret', '$can_call')";
+		// Bind parameters to the placeholders
+		$stmt->bindParam(':full_name', $full_name, PDO::PARAM_STR);
+		$stmt->bindParam(':phone_number', $phone_number, PDO::PARAM_STR);
+		$stmt->bindParam(':prayer_request', $prayer_request, PDO::PARAM_STR);
+		$stmt->bindParam(':is_secret', $is_secret, PDO::PARAM_INT);
+		$stmt->bindParam(':allow_contact', $allow_contact, PDO::PARAM_INT);
 
 		// Execute the query
-		if ($conn->query($sql) === TRUE) {
-			echo "Thank you! Your prayer request has been submitted.";
-		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
-		}
-		    } else {
-			            echo "Full Name and Prayer Request are required fields.";
-				        }
-} else {
-	// Handle when script is not accessed via a POST request
-	echo "This script can only handle POST requests. Ensure you're submitting the form correctly.";
+		$stmt->execute();
+
+		// Redirect or display success message
+		echo "<script>alert('Prayer request submitted successfully!'); window.location.href = 'index.php';</script>";
+
+		    } catch (PDOException $e) {
+			    // Catch and display any errors during query execution
+			    echo "Error: " . $e->getMessage();
+			        }
 }
-// Close the connection
-$conn->close();
 ?>

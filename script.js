@@ -1,44 +1,54 @@
-// Toggle show more details
-document.getElementById('toggle-details').addEventListener('click', function () {
-	    const moreDetails = document.getElementById('more-details');
-	    if (moreDetails.style.display === 'none') {
-		            moreDetails.style.display = 'block';
-		            this.textContent = 'Show Less Details';
-		        } else {
-				        moreDetails.style.display = 'none';
-				        this.textContent = 'Show More Details';
-				    }
+// Smooth scrolling for anchor links
+document.querySelectorAll('nav a').forEach(anchor => {
+	anchor.addEventListener('click', function (e) {
+		e.preventDefault();
+		const targetId = this.getAttribute('href').substring(1);
+		 const targetElement = document.getElementById(targetId);
+
+		// Scroll smoothly to the target element
+		targetElement.scrollIntoView({
+			            behavior: 'smooth',
+			            block: 'start'
+			        });
+		    });
 });
 
-// Handle prayer request form submission
-document.getElementById('prayer-form').addEventListener('submit', function (event) {
-	    event.preventDefault(); // Prevent form submission
-	    const name = document.getElementById('name').value;
-	    const phone = document.getElementById('phone').value;
-	    const prayerRequest = document.getElementById('prayer').value;
-	    const secret = document.querySelector('input[name="secret"]:checked').value;
-	    const canCall = document.querySelector('input[name="can_call"]:checked').value;
+// Mobile navigation toggle (responsive navigation menu)
+const menuToggle = document.createElement('button');
+menuToggle.textContent = '☰';
+menuToggle.classList.add('menu-toggle');
+document.querySelector('header').appendChild(menuToggle);
 
-	    if (name && prayerRequest) {
-		    // Here, we can send data to the PHP backend to handle form submission
-		            const formData = new FormData();
-		            formData.append('name', name);
-		            formData.append('phone', phone);
-		            formData.append('prayerRequest', prayerRequest);
-		            formData.append('secret', secret);
-		            formData.append('canCall', canCall);
+const navLinks = document.querySelector('nav');
 
-		            fetch('submit_prayer.php', {
-				                method: 'POST',
-				                body: formData
-				            })
-		            .then(response => response.text())
-		            .then(data => {
-				                document.getElementById('success-message').style.display = 'block';
-				                document.getElementById('prayer-form').reset(); // Reset form
-			    })
-		            .catch(error => {
-				                alert('Error submitting prayer request. Please try again later.');
-				            });
-		        }
+// When the menu toggle is clicked, toggle the visibility of the nav links
+menuToggle.addEventListener('click', () => {
+	    navLinks.classList.toggle('active');
+});
+
+// Form validation for prayer request form
+const form = document.querySelector('form');
+form.addEventListener('submit', function (e) {
+	const fullName = document.getElementById('full_name').value.trim();
+	const prayerRequest = document.getElementById('prayer_request').value.trim();
+	    
+	    // Check if both full name and prayer request are filled
+	 if (!fullName || !prayerRequest) {
+		         e.preventDefault();
+		 alert('Please fill in your full name and prayer request.');
+		     }
+	else {
+		// If form is valid, allow submission and refresh page afterward
+		setTimeout(() => {
+			location.reload();
+		}, 500);
+	}
+});
+
+//Auto-hide the mobile navigation when a link is clicked
+document.querySelectorAll('nav a').forEach(anchor => {
+	anchor.addEventListener('click', () => {
+		if (navLinks.classList.contains('active')) {
+			navLinks.classList.remove('active')
+		});
 });
