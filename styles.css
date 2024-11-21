@@ -4,6 +4,7 @@ body {
 	background-color: aqua;
 	background-size: cover;
 	line-height: 1.6;
+	color: rgb(30, 30, 30);
 }
 
 header {
@@ -18,7 +19,6 @@ header h1 {
 }
 
 
-/* styles.css */
 .container {
 	width: 80%;
 	max-width: 800px;
