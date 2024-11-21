@@ -1,9 +1,9 @@
 <h1>Calvary Jesus Church Website</h1>
 
-###Project Overview
+<h2>Project Overview</h2>
 <p>The Calvary Jesus Church website is designed to serve as an online presence for the church, providing users with the ability to submit prayer requests, stay updated with the church's activities, and engage with the community. The website features a prayer request form where users can submit their prayer requests confidentially, with options for receiving contact or keeping the request private.</p>
 
-###Features
+<h2>Features</h2>
 <ul>
 <li><strong>Prayer Request Form:</strong> Allows users to submit prayer requests, with options for keeping the request private and choosing if they want to be contacted.</li>
 <li><strong>Responsive Design:</strong> The website is designed to be mobile-friendly and responsive across various screen sizes.</li>
@@ -11,7 +11,7 @@
 <li><strong>Simple User Interface:</strong> Clean and intuitive design for easy navigation and interaction.</li>
 </ul>
 
-###Technologies Used
+<h3>Technologies Used</h3>
 
 <ul>
 <li>Frontend:
@@ -44,9 +44,9 @@
 </li>
 </ul>
 
-###Getting Started
+<h3>Getting Started</h3>
 
-##Prerequisites
+<h3>Prerequisites</h3>
 To run the website locally, you need:
 <ul>
 <li>XAMPP/WAMP/MAMP/LAMP (Local server environment for PHP and MySQL)</li>
@@ -54,7 +54,7 @@ To run the website locally, you need:
 <li>Web Browser (Chrome, Firefox, etc.)</li>
 </ul>
 
-##Installation
+<h3>Installation</h3>
 
 <ol>
 <li>Clone the repository:</li>
@@ -89,7 +89,7 @@ Access the Website:
 <ul>
 </li>
 
-###Usage
+<h3>Usage</h3>
 <ol>
 <li>
 Submit Prayer Requests:
@@ -115,20 +115,20 @@ Database Management:
 </ol>
 
 
-##File Structure
+<h3>File Structure</h3>
 
-Calvary_Jesus_Church/
+Calvary_Jesus_Church/<br>
 │
-├── index.html          # Homepage of the church website
-├── submit_prayer.php   # PHP script to handle prayer request submissions
-├── style.css           # Custom styles for the website
-├── script.js           # JavaScript for interactive elements
-├── calvary_church.sql  # SQL file to create the database and tables
-└── README.md           # This README file
+├── index.html          # Homepage of the church website<br>
+├── submit_prayer.php   # PHP script to handle prayer request submissions<br>
+├── style.css           # Custom styles for the website<br>
+├── script.js           # JavaScript for interactive elements<br>
+├── calvary_church.sql  # SQL file to create the database and tables<br>
+└── README.md           # This README file<br>
 
 
 
-###Contributing
+<h3>Contributing</h3>
 We welcome contributions! To contribute to the project:
 
 <ol>
@@ -139,11 +139,18 @@ We welcome contributions! To contribute to the project:
 <li>Create a new pull request.</li>
 </ol>
 
-###License
-This project is licensed under the MIT License - see the 
+<h3>License</h3>
+## Copyright 2021, Kevin Owino Odhiambo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this website and associated documentation files, to deal in the website without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the website, and to permit persons to whom the website is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the website.
+
+THE WEBSITE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE WEBSITE OR THE USE OR OTHER DEALINGS IN THE WEBSITE.
 
 
-###Contact
+
+<h4>Contact</h4>
 
 For more information or any questions regarding this project, feel free to reach out to the project maintainer:
 
