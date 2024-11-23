@@ -151,11 +151,16 @@ button:hover {
 
 																					/* Responsive Design */
 																					@media (max-width: 768px) {
-																					nav a {
-																						display: block;
-																						margin: 10px 0;
-																					}
-
+																						.navbar {
+																							padding: 5px 0;
+		font-size: 14px;
+	}
+	
+	.navbar a { 
+		padding: 10px; 
+		display: inline-block;
+	}
+																				
 																					section {
 																						margin: 10px;
 																				
