@@ -1,7 +1,9 @@
 <?php
 // Database connection configuration
-$username = 'manodhiambo';
-$password = 'Mycat@95';
+$servername = "sql109.infinityfree.com";
+$username = "if0_38091611";
+$password = "Calvary2025";
+$dbname = "prayer_requests_db";
 $dsn = "mysql:host=127.0.0.1;dbname=calvary_church;charset=utf8mb4";
 
 
