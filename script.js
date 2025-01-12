@@ -14,12 +14,6 @@ document.querySelectorAll('nav a').forEach(anchor => {
 		    });
 });
 
-// Mobile navigation toggle (responsive navigation menu)
-const menuToggle = document.createElement('button');
-menuToggle.textContent = '☰';
-menuToggle.classList.add('menu-toggle');
-document.querySelector('header').appendChild(menuToggle);
-
 const navLinks = document.querySelector('nav');
 
 // When the menu toggle is clicked, toggle the visibility of the nav links
@@ -43,15 +37,6 @@ form.addEventListener('submit', function (e) {
 				     window.location.href = 'index.html';
 			     }, 500);
 		     }
-});
-
-// Auto-hide the mobile navigation when a link is clicked
-document.querySelectorAll('nav a').forEach(anchor => {
-	anchor.addEventListener('click', () => {
-		if (navLinks.classList.contains('active')) {
-			navLinks.classList.remove('active');
-				            }
-		        });
 });
 
 // Wait for the DOM to load
