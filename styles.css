@@ -24,11 +24,11 @@ h1, h2 {
 }
 
 .logo-container {
-	margin-right: 20px;
+	margin-right: 30px;
 }
 
 .logo {
-	width: 60px;
+	width: 120px;
 	height: auto;
 	border-radius: 50%;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -269,6 +269,9 @@ footer {
 																						}
 																						.contact-links li {
 																							margin: 8px 0;
+																						}
+																						.logo {
+																							width: 80px;
 																						}
 																						.contact-links a {
 																							font-size: 14px;
