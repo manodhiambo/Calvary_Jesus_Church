@@ -1,79 +1,51 @@
-// Smooth scrolling for anchor links
-document.querySelectorAll('nav a').forEach(anchor => {
-	anchor.addEventListener('click', function (e) {
-		e.preventDefault();
+// Smooth Scrolling for Navigation Links
+document.querySelectorAll('nav a').forEach(link => {
+	link.addEventListener('click', function (event) {
+		event.preventDefault();
 		const targetId = this.getAttribute('href').substring(1);
 		const targetElement = document.getElementById(targetId);
-
-
-		// Scroll smoothly to the target element
-		targetElement.scrollIntoView({
-			            behavior: 'smooth',
-			            block: 'start'
-			        });
-		    });
-});
-
-const navLinks = document.querySelector('nav');
-
-// When the menu toggle is clicked, toggle the visibility of the nav links
-menuToggle.addEventListener('click', () => {
-	    navLinks.classList.toggle('active');
-});
-
-// Form validation for the prayer request form
-const form = document.querySelector('form');
-form.addEventListener('submit', function (e) {
-	const fullName = document.getElementById('full_name').value.trim();
-	const prayerRequest = document.getElementById('prayer_request').value.trim();
-
-	// Check if both full name and prayer request are filled
-	 if (!fullName || !prayerRequest) {
-		         e.preventDefault();
-		         alert('Please fill in your full name and prayer request.');
-		     } else {
-			     // Allow submission and redirect back to the homepage after submission
-			     setTimeout(() => {
-				     window.location.href = 'index.html';
-			     }, 500);
-		     }
-});
-
-// Wait for the DOM to load
-document.addEventListener('DOMContentLoaded', function () {
-	    alert("Welcome to Calvary Jesus Church! We're glad to have you here.");
-
-	// Additional form validation and submission message
-	const prayerForm = document.querySelector(".contact-form");
-	if (prayerForm) {
-		prayerForm.addEventListener("submit", function (e) {
-			e.preventDefault();
-			const name = document.querySelector("input[name='name']");
-			const prayerRequest = document.querySelector("textarea[name='prayer']");
-
-			if (!name.value.trim()) {
-				alert("Please provide your full name.");
-				name.focus();
-				return;
-			}
-
-			if (!prayerRequest.value.trim()) {
-				alert("Please enter a prayer request.");
-				prayerRequest.focus();
-				return;
-			}
-
-			alert("Thank you for your submission! We'll keep you in our prayers.");
-			prayerForm.reset();
-		});
-	}
-
-	// Gallery Image Click Effect
-	const galleryImages = document.querySelectorAll(".gallery img");
-	galleryImages.forEach((img) => {
-		img.addEventListener("click", function () {
-			const imageUrl = img.getAttribute("src");
-			window.open(imageUrl, "_blank");
-		});
+		if (targetElement) {
+			window.scrollTo({
+				top: targetElement.offsetTop - 50, // Adjust for header height
+				behavior: 'smooth',
+			});
+		}
 	});
 });
+
+// Highlight Active Section in Navigation
+window.addEventListener('scroll', () => {
+	const scrollPosition = window.scrollY + 60; // Adjust for header height
+
+	sections.forEach((section, index) => {
+		if (
+			scrollPosition >= section.offsetTop &&
+			scrollPosition < section.offsetTop + section.offsetHeight
+		) {
+			navLinks.forEach(link => link.classList.remove('active'));
+			navLinks[index].classList.add('active');
+		}
+	});
+});
+
+// Form Validation and Submission Confirmation
+const prayerForm = document.querySelector('form');
+prayerForm.addEventListener('submit', function (event) {
+	const fullName = document.getElementById('full_name').value.trim();
+	const prayerRequest = document.getElementById('prayer_request').value.trim();
+	if (!fullName || !prayerRequest) {
+		event.preventDefault();
+		alert('Please fill out the required fields: Full Name and Prayer Request.');
+		return;
+	}
+
+	alert('Thank you for your prayer request! Our team will review it soon.');
+
+	prayerForm.reset();
+});
+
+// Dynamic Footer Year Update
+const footerYear = document.querySelector('footer p');
+const currentYear = new Date().getFullYear();
+footerYear.innerHTML = `&copy; ${currentYear} Calvary Jesus Church. All rights reserved.`;
+	
