@@ -2,8 +2,8 @@
 // Database connection configuration
 $servername = "sql109.infinityfree.com";
 $username = "if0_38091611";
-$password = "Calvary2025";
-$dbname = "calvary_church";
+$password = "";
+$dbname = "if0_38091611_prayer_requests_db";
 
 try {
 	// Create PDO instance with the correct DSN
